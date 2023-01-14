@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Todo App</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div id="app">
+    <div class="wrapper">
+        <header>Todo App</header>
+        <div class="inputField">
+            <input type="text" placeholder="Add your new todo"
+                   v-bind:value="NameTask" @input="handlyInput" @keypress.enter="addTask">
+            <button type="button" @click="addTask"><i class="fas fa-plus"></i></button>
+        </div>
+        <ul class="todoList">
+            <li v-for="(task, index) in tasks">{{ task.title }}<span @click="removeTask(index)" class="icon"><i
+                    class="fas fa-trash"></i></span>
+            </li>
+        </ul>
+        <div class="footer">
+            <span>You have <span class="pendingTasks">{{ tasks.length }}</span> pending tasks</span>
+            <button type="button" @click="removeAll">Clear All</button>
+        </div>
+    </div>
+</div>
+
+<script src="fontaawesome.js"></script>
+<script src="vue.global.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
